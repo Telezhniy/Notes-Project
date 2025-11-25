@@ -280,6 +280,7 @@ textarea {
 .taskHeader span {
   margin-right: auto;
 }
+
 .noNotes,
 .noFavoriteNotes {
   display: flex;

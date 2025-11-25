@@ -47,6 +47,8 @@ perspiciatis, neque doloremque perferendis ipsa tempora magni
 const model = {
   notes: MOCK_TASKS,
   addNote(header, content, color) {
+    view.noNotes.classList.add("hidden");
+    view.tasksCheckbox.classList.remove("hidden");
     newNote = {
       id: new Date().getTime(),
       header: header,
@@ -129,6 +131,8 @@ const view = {
   wrongHeaderNoteContent: document.querySelector(".tooLongNote"),
   colorNotCosen: document.querySelector(".chooseColor"),
   noFavoriteNotes: document.querySelector(".noFavoriteNotes"),
+  noNotes: document.querySelector(".noNotes"),
+  tasksCheckbox: document.querySelector(".tasksCheckbox"),
   showLabel(someLabel) {
     someLabel.classList.toggle("visible");
     document.getElementById("addButton").disabled = true;
@@ -176,8 +180,8 @@ const view = {
       <p>Добавьте свою первую заметку в избранное</p>`;
     }
     if (!this.notesList.hasChildNodes()) {
-      this.taskContent.innerHTML = `<div class="noNotes"><p>У вас нет еще ни одной заметки</p>
-      <p>Заполните поля выше и создайте свою первую заметку!</p></div> `;
+      this.noNotes.classList.remove("hidden");
+      this.tasksCheckbox.classList.add("hidden");
     }
   },
   init() {
