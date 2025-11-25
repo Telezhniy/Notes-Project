@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="headerWrapper">
+        <a class="logo" href="#">
+          <picture>
+            <source srcset="./accets/img/Vector.webp" type="image/webp" />
+            <source srcset="./accets/img/Vector.png" type="image/png" />
+            <img src="./accets/img/Vector.png" alt="Notebook" />
+          </picture>
+          NOTES
+        </a>
+        <div class="counterWrapper">
+          <img src="./accets/img/notes.svg" alt="smallNotebook" />
+          <div class="counterContentWrapper">
+            <p class="notesCounter" id="notesCounter"></p>
+            <p class="favoriteNotesCounter" id="favoriteNotesCounter"></p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="createTask">
+      <div class="container">
+        <div class="createTaskWrapper">
+          <form action="#" class="form">
+            <fieldset class="fieldest">
+              <legend>Название заметки</legend>
+              <input
+                type="text"
+                id="noteName"
+                class="noteName"
+                placeholder="Напишите название новой заметки..."
+              />
+              <legend>Описание новой заметки</legend>
+
+              <textarea
+                name="note"
+                id="note"
+                class="noteTextArea"
+                placeholder="Напишите описание новой заметки..."
+              ></textarea>
+            </fieldset>
+          </form>
+          <div class="addNoteWrapper">
+            <span>Выберите цвет заметки</span>
+            <form class="radioWrapper" id="colorButtons">
+              <input
+                type="radio"
+                value="rgb(243, 219, 125)"
+                name="colorRadioButton"
+                id="yellow"
+              />
+              <input
+                type="radio"
+                value="rgb(194, 243, 125)"
+                name="colorRadioButton"
+                id="green"
+              />
+              <input
+                type="radio"
+                value="rgb(125, 225, 243)"
+                name="colorRadioButton"
+                id="blue"
+              />
+              <input
+                type="radio"
+                value="rgb(243, 125, 125)"
+                name="colorRadioButton"
+                id="pink"
+              />
+              <input
+                type="radio"
+                value="rgb(231, 125, 243)"
+                name="colorRadioButton"
+                id="purple"
+              />
+            </form>
+            <button type="submit" class="addButton" id="addButton">
+              Добавить заметку
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="tasks">
+      <div class="container">
+        <div class="tasksContent" id="taskContent">
+          <div class="tasksCheckbox">
+            <input id="favoritesCheckbox" type="checkbox" />
+            <label for="favoritesCheckbox">
+              Показать только избранные заметки</label
+            >
+          </div>
+          <ul class="tasksList" id="tasksList"></ul>
+        </div>
+      </div>
+    </section>
+    <!-- <div class="confirmDeletion hidden" id="confirmDeletion">
+      <p>Вы уверены, что хотите удалить заметку?</p>
+      <button id="yesDelete">Да</button>
+      <button id="noDontDelete">Нет</button>
+    </div> -->
+    <div class="confirmedCreation">Заметка добавлена!</div>
+    <div class="tooLongHeader">Максимальная длина заголовка - 50 символов</div>
+    <div class="tooLongNote">Максимальная длина заметки - 400 символов</div>
+    <div class="chooseColor">Выберите, пожалуйста, цвет заметки</div>
+    <script src="./index.js"></script>
+  </body>
+</html>
+
+<!-- // localstorage //local fonts //are u sure that u want to delete
+//style="pointer-events: none;" inert -->

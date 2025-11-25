@@ -1,0 +1,328 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(./accets/fonts/montserrat-medium\(500\).woff2) format("woff2"),
+    url(./accets/fonts/montserrat-medium\(500\).ttf) format("ttf");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(./accets/fonts/montserrat-regular\(400\).woff2) format("woff2"),
+    url(./accets/fonts/montserrat-regular\(400\).ttf) format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+button {
+  cursor: pointer;
+}
+body {
+  background-color: #fafafc;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+fieldset {
+  border: none;
+}
+
+.container {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+.header {
+  margin-bottom: 24px;
+  background-color: #ffffff;
+}
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 18px 64px 18px;
+  align-items: center;
+  border-bottom: solid 1px #0b0c0d29;
+}
+.counterWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.counterWrapper img {
+  width: 48px;
+  height: 48px;
+}
+.counterContentWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.createTask {
+  margin-bottom: 60px;
+  background-color: #fafafc;
+}
+legend {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  color: #919191;
+}
+.addNoteWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.addNoteWrapper span {
+  font-weight: 400;
+
+  font-size: 12px;
+
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #919191;
+}
+.radioWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.noteName,
+.noteTextArea {
+  padding: 6px 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  resize: none;
+  font-weight: 400;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 24px;
+  color: #919191;
+}
+.noteName:focus,
+.noteTextArea:focus {
+  outline: none;
+}
+input[type="radio"] {
+  appearance: none;
+  margin: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+}
+input[type="radio"]:checked {
+  border: solid 1.5px #457cdc;
+}
+#yellow {
+  background-image: url("./accets/img/Ellipse\ Yellow.svg");
+}
+#green {
+  background-image: url("./accets/img/Ellipse\ green.svg");
+}
+#blue {
+  background-image: url("./accets/img/Ellipse\ blue.svg");
+}
+#pink {
+  background-image: url("./accets/img/Ellipse\ red.svg");
+}
+#purple {
+  background-image: url("./accets/img/Ellipse\ purple.svg");
+}
+.addButton {
+  max-width: 232px;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+
+  font-size: 16px;
+
+  line-height: 24px;
+
+  color: #ffffff;
+  background-color: #457cdc;
+  width: 100%;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  padding: 6px 24px 6px 56px;
+  background-image: url("./accets/img/white\ cross.svg");
+  background-repeat: no-repeat;
+  background-position: left 24px center;
+}
+.createTaskWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 24px;
+  max-height: 228px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08);
+}
+form {
+  flex-grow: 1;
+}
+.fieldest {
+  display: flex;
+  flex-direction: column;
+}
+.fieldest input {
+  margin-bottom: 12px;
+
+  max-width: 344px;
+}
+textarea {
+  flex-grow: 1;
+  max-width: 848px;
+  height: 84px;
+}
+.tasksContent {
+  display: flex;
+  flex-direction: column;
+}
+.tasksCheckbox {
+  align-self: flex-end;
+  margin-bottom: 12px;
+}
+.tasksList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.tasksList li {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  max-width: 368px;
+  max-height: 230px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08);
+
+  border-radius: 8px;
+}
+.tasksList li p {
+  font-weight: 400;
+
+  font-size: 14px;
+
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #292515;
+}
+
+.taskHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 12px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  font-weight: 500;
+
+  font-size: 16px;
+
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #292515;
+}
+.taskHeader button {
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: inherit;
+}
+.favorite {
+  background-repeat: no-repeat;
+}
+.Favoritefalse {
+  background-image: url("./accets/img/heart\ inactive.svg");
+}
+.Favoritetrue {
+  background-image: url("./accets/img/heart\ active.svg");
+}
+.tasksList p {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 12px;
+  background-color: #ffffff;
+}
+.taskHeaderBackgroundColorYellow {
+  background-color: rgb(243, 219, 125);
+}
+.taskHeaderBackgroundColorGreen {
+  background-color: rgb(194, 243, 125);
+}
+.taskHeaderBackgroundColorBlue {
+  background-color: rgb(125, 225, 243);
+}
+.taskHeaderBackgroundColorPink {
+  background-color: rgb(243, 125, 125);
+}
+.taskHeaderBackgroundColorPurple {
+  background-color: rgb(231, 125, 243);
+}
+
+.taskHeader span {
+  margin-right: auto;
+}
+
+.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.unavalible {
+  pointer-events: none;
+}
+.confirmedCreation,
+.tooLongHeader,
+.tooLongNote,
+.chooseColor {
+  position: fixed;
+  bottom: 72px;
+  right: 64px;
+  z-index: 10;
+}
+.confirmedCreation,
+.tooLongHeader,
+.tooLongNote,
+.chooseColor {
+  padding: 12px 24px 12px 58px;
+  background-color: #f23d5b;
+  color: #ffffff;
+  background-image: url("./accets/img/warning.svg");
+  background-repeat: no-repeat;
+  background-position: left 24px center;
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 1.5s ease-out, visibility 1.5s ease-out;
+
+  font-weight: 500;
+
+  font-size: 14px;
+
+  line-height: 24px;
+}
+.confirmedCreation {
+  background-color: #47b27d;
+  background-image: url("./accets/img/Done.svg");
+}
+.hidden {
+  display: none !important;
+}
