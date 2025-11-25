@@ -99,6 +99,7 @@ const model = {
         if (!el.classList.contains("isFavoritetrue")) {
           el.classList.add("hidden");
         }
+
         view.renderNotes(this.notes);
       });
   },
@@ -124,8 +125,21 @@ const view = {
   favorite: document.getElementById("favoritesCheckbox"),
   favoriteNotesCounter: document.getElementById("favoriteNotesCounter"),
   notesCounter: document.getElementById("notesCounter"),
+  wrongHeader: document.querySelector(".tooLongHeader"),
+  wrongHeaderNoteContent: document.querySelector(".tooLongNote"),
+  colorNotCosen: document.querySelector(".chooseColor"),
+  noFavoriteNotes: document.querySelector(".noFavoriteNotes"),
+  showLabel(someLabel) {
+    someLabel.classList.toggle("visible");
+    document.getElementById("addButton").disabled = true;
+    setTimeout(() => {
+      someLabel.classList.toggle("visible");
+      document.getElementById("addButton").disabled = false;
+    }, 3000);
+  },
   renderNotes(notes) {
     this.notesList.innerHTML = "";
+
     notes.forEach((note) => {
       const noteItem = document.createElement("li");
       noteItem.classList.add(`isFavorite${note.isFavorite}`);
@@ -153,6 +167,18 @@ const view = {
         return e.isFavorite === true;
       }).length
     }</b>`;
+
+    if (
+      +this.favoriteNotesCounter.querySelector("b").innerHTML === 0 &&
+      this.favorite.checked
+    ) {
+      this.noFavoriteNotes.innerHTML = `<p> У вас нет еще ни одной избранной заметки</p> 
+      <p>Добавьте свою первую заметку в избранное</p>`;
+    }
+    if (!this.notesList.hasChildNodes()) {
+      this.taskContent.innerHTML = `<div class="noNotes"><p>У вас нет еще ни одной заметки</p>
+      <p>Заполните поля выше и создайте свою первую заметку!</p></div> `;
+    }
   },
   init() {
     this.favorite.addEventListener("change", (event) => {
@@ -201,26 +227,11 @@ const controller = {
     ) {
       model.addNote(header, content, color);
     } else if (header.length > 50 || header.length < 1) {
-      document.querySelector(".tooLongHeader").classList.toggle("visible");
-      document.getElementById("addButton").disabled = true;
-      setTimeout(() => {
-        document.querySelector(".tooLongHeader").classList.toggle("visible");
-        document.getElementById("addButton").disabled = false;
-      }, 3000);
+      view.showLabel(view.wrongHeader);
     } else if (content.length > 300 || content.length < 1) {
-      document.querySelector(".tooLongNote").classList.toggle("visible");
-      document.getElementById("addButton").disabled = true;
-      setTimeout(() => {
-        document.querySelector(".tooLongNote").classList.toggle("visible");
-        document.getElementById("addButton").disabled = false;
-      }, 3000);
+      view.showLabel(view.wrongHeaderNoteContent);
     } else if (color === null) {
-      document.querySelector(".chooseColor").classList.toggle("visible");
-      document.getElementById("addButton").disabled = true;
-      setTimeout(() => {
-        document.querySelector(".chooseColor").classList.toggle("visible");
-        document.getElementById("addButton").disabled = false;
-      }, 3000);
+      view.showLabel(view.colorNotCosen);
     }
   },
   deleteNote(id) {
@@ -232,7 +243,8 @@ const controller = {
   isFavorite(checkbox) {
     if (checkbox.checked) {
       model.onlyFavorite();
-    } else {
+    } else if (!checkbox.checked) {
+      view.noFavoriteNotes.innerHTML = "";
       view.renderNotes(model.notes);
     }
   },
