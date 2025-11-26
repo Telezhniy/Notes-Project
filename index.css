@@ -167,6 +167,7 @@ input[type="radio"]:checked {
   padding: 24px;
   max-height: 228px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.08);
+  gap: 10px;
 }
 form {
   flex-grow: 1;
@@ -342,6 +343,81 @@ textarea {
   background-color: #47b27d;
   background-image: url("./accets/img/Done.svg");
 }
+.confirmDeletion {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 72px;
+  right: 64px;
+  z-index: 10;
+  padding: 12px 24px;
+  background-color: #47b27d;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+.confirmDeletion p {
+  color: #ffffff;
+}
+.confirmDeletionButtonWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 30px;
+}
+.confirmDeletionButtonWrapper button {
+  border-radius: 10px;
+  background-color: pink;
+  width: 34px;
+  height: 24px;
+}
 .hidden {
   display: none !important;
+}
+@media screen and (max-width: 1180px) {
+  .tasksList {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 920px) {
+  .tasksList li p {
+    height: 200px;
+    overflow-y: auto;
+  }
+}
+@media screen and (max-width: 500px) {
+  .counterWrapper img {
+    display: none;
+  }
+  .addButton {
+    background-image: none;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    max-width: 100px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .logo img {
+    width: 12px;
+    height: 12px;
+  }
+  .radioWrapper input {
+    width: 12px;
+    height: 12px;
+  }
+  .counterWrapper p {
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 8px;
+  }
+  .tasksList li .taskHeader,
+  .tasksList li {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+  }
 }

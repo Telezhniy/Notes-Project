@@ -45,7 +45,7 @@ perspiciatis, neque doloremque perferendis ipsa tempora magni
   },
 ];
 const model = {
-  notes: MOCK_TASKS,
+  notes: [],
   addNote(header, content, color) {
     view.noNotes.classList.add("hidden");
     view.tasksCheckbox.classList.remove("hidden");
@@ -133,6 +133,10 @@ const view = {
   noFavoriteNotes: document.querySelector(".noFavoriteNotes"),
   noNotes: document.querySelector(".noNotes"),
   tasksCheckbox: document.querySelector(".tasksCheckbox"),
+  yesDelete: document.getElementById("yesDelete"),
+  noDontDelete: document.getElementById("noDontDelete"),
+  confirmDeletion: document.getElementById("confirmDeletion"),
+
   showLabel(someLabel) {
     someLabel.classList.toggle("visible");
     document.getElementById("addButton").disabled = true;
@@ -142,6 +146,7 @@ const view = {
     }, 3000);
   },
   renderNotes(notes) {
+    this.confirmDeletion.classList.add("hidden");
     this.notesList.innerHTML = "";
 
     notes.forEach((note) => {
@@ -201,15 +206,25 @@ const view = {
       const clickedButton = event.target.closest(".deleteButton");
       // event.stopPropagation;
       if (clickedButton) {
+        this.confirmDeletion.classList.remove("hidden");
         let id = +clickedButton.closest(".taskHeader").id;
-        controller.deleteNote(id);
-        this.renderNotes(model.notes);
+        this.yesDelete.addEventListener("click", () => {
+          controller.deleteNote(id);
+          id = "";
+          this.renderNotes(model.notes);
+        });
+        this.noDontDelete.addEventListener("click", () => {
+          this.confirmDeletion.classList.add("hidden");
+          id = "";
+          this.renderNotes(model.notes);
+        });
       }
     });
     this.taskContent.addEventListener("click", (event) => {
       const clickedButton = event.target;
       if (clickedButton.classList.contains("favorite")) {
         let id = +clickedButton.closest(".taskHeader").id;
+
         model.changeStatus(id);
       }
     });
@@ -239,10 +254,8 @@ const controller = {
     }
   },
   deleteNote(id) {
-    const confirmed = confirm("are you sure that u want to delete note?");
-    if (confirmed) {
-      model.deleteNote(id);
-    }
+    model.deleteNote(id);
+    view.confirmDeletion.classList.toggle("hidden");
   },
   isFavorite(checkbox) {
     if (checkbox.checked) {
